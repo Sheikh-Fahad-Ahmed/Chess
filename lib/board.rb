@@ -3,9 +3,10 @@ require './lib/pieces/knight'
 require './lib/pieces/rook'
 require './lib/pieces/bishop'
 require './lib/pieces/king'
+require './lib/pieces/queen'
 
 class Board
-  attr_accessor :board, :pawn, :knight, :rook, :bishop, :king
+  attr_accessor :board, :pawn, :knight, :rook, :bishop, :king, :queen
 
   def initialize
     @rook = Rook.new
@@ -13,6 +14,7 @@ class Board
     @knight = Knight.new
     @bishop = Bishop.new
     @king = King.new
+    @queen = Queen.new
     @board = Array.new(8) { Array.new(8, '.') }
     @num_arr = (1..8).to_a
   end
@@ -74,6 +76,18 @@ class Board
     end
   end
 
+  def queen_setup
+    @board.each_with_index do |row, row_index|
+      row.each_with_index do |_cell, col_index|
+        if row_index.zero? && col_index == 3
+          @board[row_index][col_index] = queen.queen_black
+        elsif row_index == 7 && col_index == 3
+          @board[row_index][col_index] = queen.queen_white
+        end
+      end
+    end
+  end
+
   def show_board
     print '  '
     ('a'..'h').each { |i| print "#{i} " }
@@ -93,4 +107,5 @@ b.knight_setup
 b.rook_setup
 b.bishop_setup
 b.king_setup
+b.queen_setup
 b.show_board
