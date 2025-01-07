@@ -16,7 +16,7 @@ class Board
     @king = King.new
     @queen = Queen.new
     @board = Array.new(8) { Array.new(8, '.') }
-    @num_arr = (1..8).to_a
+    @num_arr = (1..8).to_a.reverse
   end
 
   def pawn_setup
