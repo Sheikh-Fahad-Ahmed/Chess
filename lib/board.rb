@@ -6,7 +6,7 @@ require './lib/pieces/king'
 require './lib/pieces/queen'
 
 class Board
-  attr_accessor :board, :pawn, :knight, :rook, :bishop, :king, :queen
+  attr_accessor :board, :pawn, :knight, :rook, :bishop, :king, :queen, :columns
 
   def initialize
     @rook = Rook.new
@@ -17,6 +17,7 @@ class Board
     @queen = Queen.new
     @board = Array.new(8) { Array.new(8, '.') }
     @num_arr = (1..8).to_a.reverse
+    @columns = ('a'..'h').each.with_index(1).to_h
   end
 
   def pawn_setup
@@ -88,6 +89,27 @@ class Board
     end
   end
 
+  def update_position(previous_position, new_position)
+    new_position[0] = 8 - new_position[0].to_i
+    new_position[1] = @columns[new_position[1]] - 1
+    previous_position[0] = 8 - previous_position[0].to_i
+    previous_position[1] = @columns[previous_position[1]] - 1
+    print new_position
+    print previous_position
+    @board[new_position[0]][new_position[1]] = @board[previous_position[0]][previous_position[1]]
+    @board[previous_position[0]][previous_position[1]] = '.'
+  end
+
+  def previous_position?
+    puts "\nEnter a previous position"
+    gets.chomp.split('').reverse
+  end
+
+  def new_position?
+    puts "\nEnter a new position"
+    gets.chomp.split('').reverse
+  end
+
   def show_board
     print '  '
     ('a'..'h').each { |i| print "#{i} " }
@@ -108,4 +130,12 @@ b.rook_setup
 b.bishop_setup
 b.king_setup
 b.queen_setup
+b.show_board
+print b.columns
+puts 
+b.board[1][1] = "\u265B"
+b.show_board
+puts
+b.update_position(b.previous_position?, b.new_position?)
+puts
 b.show_board
