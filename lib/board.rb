@@ -75,7 +75,7 @@ class Board
   #     end
   #   end
   # end
-  
+
   def update_position(previous_position, new_position)
     new_position[0] = 8 - new_position[0].to_i
     new_position[1] = @columns[new_position[1]] - 1
