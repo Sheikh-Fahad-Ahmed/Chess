@@ -1,19 +1,19 @@
-require './lib/setup'
+require './lib/chess_pieces/pieces'
 require './lib/board'
 require './lib/position'
 
 class Game
   include Position
-  attr_accessor :setup, :board
+  attr_accessor :pieces, :board
 
   def initialize
     @board = Board.new
-    @setup = Setup.new
+    @pieces = Pieces.new
   end
 
   def start_game
     board.show_board
-    setup.arrange_board(@board.board)
+    pieces.assemble(@board.board)
     board.show_board
   end
 
