@@ -94,5 +94,4 @@ class Setup
     king_setup(board)
     queen_setup(board)
   end
-
 end
