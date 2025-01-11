@@ -4,5 +4,6 @@ class Queen
   def initialize
     @queen_black = "\u265B"
     @queen_white = "\u2655"
+    @name = 'Queen'
   end
 end

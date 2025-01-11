@@ -18,14 +18,15 @@ class Game
   end
 
   def choose_a_piece
-    choice = position?(@board.columns)
-    # until chess_piece?(choice)
-    #   choice = position?
+    choice = position?(board.columns)
+    # until pieces.chess_piece?(choice)
+    #   choice = position?(board.columns)
     # end
+    chess_piece?(choice, board)
   end
 
-  def chess_piece?(choice)
-    @board.board[choice[0]][choice[1]]
+  def chess_piece?(choice,board)
+    board.board[choice[0]][choice[1]]
   end
 end
 

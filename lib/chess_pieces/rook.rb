@@ -4,5 +4,6 @@ class Rook
   def initialize
     @rook_white = "\u2656"
     @rook_black = "\u265C"
+    @name = 'Rook'
   end
 end

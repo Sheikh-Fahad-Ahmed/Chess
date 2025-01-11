@@ -4,5 +4,6 @@ class King
   def initialize
     @king_white = "\u2654"
     @king_black = "\u265A"
+    @name = 'King'
   end
 end

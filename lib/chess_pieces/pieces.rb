@@ -15,6 +15,9 @@ class Pieces
     @bishop = Bishop.new
     @king = King.new
     @queen = Queen.new
+    @pieces = [rook.rook_white, rook.rook_black, pawn.pawn_white, pawn.pawn_black, knight.knight_white, 
+               knight.knight_black, bishop.bishop_white, bishop.bishop_black, king.king_white, king.king_black, 
+               queen.queen_white, queen.queen_black]
   end
 
   def pawn_setup(board)
@@ -93,5 +96,9 @@ class Pieces
     bishop_setup(board)
     king_setup(board)
     queen_setup(board)
+  end
+
+  def chess_piece?(choice,board)
+    board[choice[0], choice[0]]
   end
 end
