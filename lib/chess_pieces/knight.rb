@@ -6,4 +6,12 @@ class Knight
     @knight_black = "\u265E"
     @name = 'Knight'
   end
+
+  def knight?(piece)
+    if piece == knight_black || piece == knight_white
+      @name
+    else
+      false
+    end
+  end
 end

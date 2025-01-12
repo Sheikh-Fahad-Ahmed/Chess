@@ -6,7 +6,7 @@ require './lib/chess_pieces/king'
 require './lib/chess_pieces/queen'
 
 class Pieces
-  attr_accessor :pawn, :knight, :rook, :bishop, :king, :queen, :columns
+  attr_accessor :pawn, :knight, :rook, :bishop, :king, :queen, :columns, :pieces
 
   def initialize
     @rook = Rook.new
@@ -100,5 +100,9 @@ class Pieces
 
   def chess_piece?(choice,board)
     board[choice[0], choice[0]]
+  end
+
+  def piece?(piece)
+    name = pawn.pawn?(piece) || rook.rook?(piece) || knight.knight?(piece) || bishop.bishop?(piece) || king.king?(piece) || queen.queen?(piece)
   end
 end

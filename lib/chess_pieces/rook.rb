@@ -6,4 +6,12 @@ class Rook
     @rook_black = "\u265C"
     @name = 'Rook'
   end
+
+  def rook?(piece)
+    if piece == rook_black || piece == rook_white
+      @name
+    else
+      false
+    end
+  end
 end

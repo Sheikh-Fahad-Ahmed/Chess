@@ -6,4 +6,12 @@ class Bishop
     @bishop_black = "\u265D"
     @name = 'Bishop'
   end
+
+  def bishop?(piece)
+    if piece == bishop_black || piece == bishop_white
+      @name
+    else
+      false
+    end
+  end
 end

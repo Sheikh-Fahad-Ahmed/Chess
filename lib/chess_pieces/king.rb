@@ -6,4 +6,12 @@ class King
     @king_black = "\u265A"
     @name = 'King'
   end
+
+  def king?(piece)
+    if piece == king_black || piece == king_white
+      @name
+    else
+      false
+    end
+  end
 end

@@ -26,7 +26,7 @@ class Game
   end
 
   def chess_piece?(choice,board)
-    board.board[choice[0]][choice[1]]
+    pieces.piece?(board.board[choice[0]][choice[1]]) if pieces.pieces.include?(board.board[choice[0]][choice[1]])
   end
 end
 

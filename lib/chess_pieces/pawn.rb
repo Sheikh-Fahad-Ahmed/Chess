@@ -6,6 +6,14 @@ class Pawn
     @pawn_black = "\u265F"
     @name = 'Pawn'
   end
+
+  def pawn?(piece)
+    if piece == pawn_black || piece == pawn_white
+      @name
+    else
+      false
+    end
+  end
 end
 
 
