@@ -26,10 +26,11 @@ class Game
   end
 
   def chess_piece?(choice,board)
-    pieces.piece?(board.board[choice[0]][choice[1]]) if pieces.pieces.include?(board.board[choice[0]][choice[1]])
+    return pieces.piece?(board.board[choice[0]][choice[1]]) if pieces.pieces.include?(board.board[choice[0]][choice[1]])
+
+    "\nEmpty Space" if board.board[choice[0]][choice[1]] == '.'
   end
 end
-
 
 g = Game.new
 g.start_game
