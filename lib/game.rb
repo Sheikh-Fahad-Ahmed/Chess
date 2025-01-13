@@ -19,10 +19,15 @@ class Game
 
   def choose_a_piece
     choice = position?(board.columns)
-    # until pieces.chess_piece?(choice)
-    #   choice = position?(board.columns)
-    # end
-    chess_piece?(choice, board)
+    choice = position?(board.columns) while chess_piece?(choice, board) == "\nEmpty Space"
+    puts "You picked #{chess_piece?(choice, board)}"
+    next_move(choice)
+  end
+
+  def next_move(choice)
+    puts "\nEnter your next move: "
+    new_position = position?(board.columns)
+    board.update_position(choice, new_position)
   end
 
   def chess_piece?(choice,board)
@@ -34,4 +39,5 @@ end
 
 g = Game.new
 g.start_game
-print g.choose_a_piece
+g.choose_a_piece
+g.board.show_board

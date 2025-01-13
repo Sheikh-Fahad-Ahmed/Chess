@@ -103,9 +103,6 @@ class Pieces
   end
 
   def piece?(piece)
-    return piece
-    name = pawn.pawn?(piece) || rook.rook?(piece) || knight.knight?(piece) || bishop.bishop?(piece) || king.king?(piece) || queen.queen?(piece) || nil
-
-    name
+    name = pawn.pawn?(piece) || rook.rook?(piece) || knight.knight?(piece) || bishop.bishop?(piece) || king.king?(piece) || queen.queen?(piece)
   end
 end

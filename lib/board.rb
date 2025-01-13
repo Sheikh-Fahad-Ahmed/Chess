@@ -77,14 +77,13 @@ class Board
   # end
 
   def update_position(previous_position, new_position)
-    new_position[0] = 8 - new_position[0].to_i
-    new_position[1] = @columns[new_position[1]] - 1
-    previous_position[0] = 8 - previous_position[0].to_i
-    previous_position[1] = @columns[previous_position[1]] - 1
-    print new_position
-    print previous_position
+    # new_position[0] = 8 - new_position[0].to_i
+    # new_position[1] = @columns[new_position[1]] - 1
+    # previous_position[0] = 8 - previous_position[0].to_i
+    # previous_position[1] = @columns[previous_position[1]] - 1
     @board[new_position[0]][new_position[1]] = @board[previous_position[0]][previous_position[1]]
     @board[previous_position[0]][previous_position[1]] = '.'
+    @board
   end
 
   def previous_position?
