@@ -27,6 +27,10 @@ class Game
   def next_move(choice)
     puts "\nEnter your next move: "
     new_position = position?(board.columns)
+    until chess_piece?(new_position, board) == "\nEmpty Space"
+      puts 'You picked a chess piece. Try again.'
+      new_position = position?(board.columns)
+    end
     board.update_position(choice, new_position)
   end
 
