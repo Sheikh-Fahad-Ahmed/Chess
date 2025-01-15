@@ -34,7 +34,7 @@ class Game
     board.update_position(choice, new_position)
   end
 
-  def chess_piece?(choice,board)
+  def chess_piece?(choice, board)
     return pieces.piece?(board.board[choice[0]][choice[1]]) if pieces.pieces.include?(board.board[choice[0]][choice[1]])
 
     "\nEmpty Space" if board.board[choice[0]][choice[1]] == '.'
