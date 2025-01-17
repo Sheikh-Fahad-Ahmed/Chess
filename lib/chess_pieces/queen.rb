@@ -7,11 +7,9 @@ class Queen
     @name = 'Queen'
   end
 
-  def queen?(piece)
-    if piece == queen_black || piece == queen_white
-      @name
-    else
-      false
-    end
+  def attribute?(piece)
+    return self if piece == queen_black || queen_white
+
+    false
   end
 end

@@ -7,11 +7,9 @@ class Rook
     @name = 'Rook'
   end
 
-  def rook?(piece)
-    if piece == rook_black || piece == rook_white
-      @name
-    else
-      false
-    end
+  def attribute?(piece)
+    return self if piece == rook_black || rook_white
+
+    false
   end
 end

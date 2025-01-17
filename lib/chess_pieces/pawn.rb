@@ -7,12 +7,10 @@ class Pawn
     @name = 'Pawn'
   end
 
-  def pawn?(piece)
-    if piece == pawn_black || piece == pawn_white
-      @name
-    else
-      false
-    end
+  def attribute?(piece)
+    return self if piece == pawn_black || pawn_white
+
+    false
   end
 
   def legal_moves(coordinate, board)
@@ -20,5 +18,6 @@ class Pawn
     if board[coordinate[0]][coordinate[1]] == pawn_white && coordinate[0] == 6
       moves.append([coordinate[0] + 1], [coordinate[0] + 2])
     end
+    moves
   end
 end

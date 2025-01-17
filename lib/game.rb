@@ -21,6 +21,7 @@ class Game
     choice = position?(board.columns)
     choice = position?(board.columns) while chess_piece?(choice, board) == "\nEmpty Space"
     puts "You picked #{chess_piece?(choice, board)}"
+    
     next_move(choice)
   end
 

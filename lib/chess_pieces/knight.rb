@@ -7,11 +7,9 @@ class Knight
     @name = 'Knight'
   end
 
-  def knight?(piece)
-    if piece == knight_black || piece == knight_white
-      @name
-    else
-      false
-    end
+  def attribute?(piece)
+    return self if piece == knight_black || knight_white
+
+    false
   end
 end
