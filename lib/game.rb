@@ -4,28 +4,31 @@ require './lib/position'
 
 class Game
   include Position
-  attr_accessor :pieces, :board
+  attr_accessor :piece_instance, :board
 
   def initialize
     @board = Board.new
-    @pieces = Pieces.new
+    @piece_instance = Pieces.new
   end
 
   def start_game
     board.show_board
-    pieces.assemble(@board.board)
+    piece_instance.assemble(board.board)
     board.show_board
   end
 
   def choose_a_piece
     choice = position?(board.columns)
     choice = position?(board.columns) while chess_piece?(choice, board) == "\nEmpty Space"
-    puts "You picked #{chess_piece?(choice, board)}"
+
     
+    puts "You picked #{chess_piece?(choice, board).name}"
+
     next_move(choice)
   end
 
   def next_move(choice)
+    
     puts "\nEnter your next move: "
     new_position = position?(board.columns)
     until chess_piece?(new_position, board) == "\nEmpty Space"
@@ -36,9 +39,15 @@ class Game
   end
 
   def chess_piece?(choice, board)
-    return pieces.piece?(board.board[choice[0]][choice[1]]) if pieces.pieces.include?(board.board[choice[0]][choice[1]])
+    piece_symbol = board.board[choice[0]][choice[1]]
 
-    "\nEmpty Space" if board.board[choice[0]][choice[1]] == '.'
+    piece_instance.pieces.each do |piece|
+      return piece if piece.symbol.include?(piece_symbol)
+    end
+
+    return "\nEmpty Space" if piece_symbol == '.'
+
+    nil
   end
 end
 

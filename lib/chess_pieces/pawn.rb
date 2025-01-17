@@ -1,5 +1,5 @@
 class Pawn
-  attr_accessor :pawn_white, :pawn_black
+  attr_accessor :pawn_white, :pawn_black, :name
 
   def initialize
     @pawn_white = "\u2659"
@@ -7,8 +7,12 @@ class Pawn
     @name = 'Pawn'
   end
 
+  def symbol
+    [@pawn_white, @pawn_black]
+  end
+
   def attribute?(piece)
-    return self if piece == pawn_black || pawn_white
+    return self if symbol.include?(piece)
 
     false
   end
