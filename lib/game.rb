@@ -21,14 +21,13 @@ class Game
     choice = position?(board.columns)
     choice = position?(board.columns) while chess_piece?(choice, board) == "\nEmpty Space"
 
-    
     puts "You picked #{chess_piece?(choice, board).name}"
-
     next_move(choice)
   end
 
   def next_move(choice)
-    
+    moves = chess_piece?(choice, board).legal_moves(choice, board.board)
+    print "Your legal moves are : #{moves}"
     puts "\nEnter your next move: "
     new_position = position?(board.columns)
     until chess_piece?(new_position, board) == "\nEmpty Space"
