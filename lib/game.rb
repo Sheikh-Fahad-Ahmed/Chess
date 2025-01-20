@@ -26,8 +26,9 @@ class Game
   end
 
   def next_move(choice)
-    moves = chess_piece?(choice, board).legal_moves(choice, board.board)
-    print "Your legal moves are : #{moves}"
+    moves = chess_piece?(choice, board).legal_moves(choice, board.board, board.columns)
+    puts "Your legal moves are : "
+    puts moves
     puts "\nEnter your next move: "
     new_position = position?(board.columns)
     until chess_piece?(new_position, board) == "\nEmpty Space"
