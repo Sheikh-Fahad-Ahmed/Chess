@@ -26,13 +26,20 @@ class Game
   end
 
   def next_move(choice)
-    moves = chess_piece?(choice, board).legal_moves(choice, board.board, board.columns)
+    moves = chess_piece?(choice, board).legal_moves(choice, board.board)
+    print moves
+    move_notations = board.chess_notation(moves)
     puts "Your legal moves are : "
-    puts moves
+    puts move_notations
     puts "\nEnter your next move: "
     new_position = position?(board.columns)
+    print new_position
     until chess_piece?(new_position, board) == "\nEmpty Space"
       puts 'You picked a chess piece. Try again.'
+      new_position = position?(board.columns)
+    end
+    until moves.include?(new_position) == true
+      puts "\nThat is not a legal move."
       new_position = position?(board.columns)
     end
     board.update_position(choice, new_position)

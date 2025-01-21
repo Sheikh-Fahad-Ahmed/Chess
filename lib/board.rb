@@ -107,6 +107,15 @@ class Board
       i += 1
     end
   end
+
+  def chess_notation(coordinates)
+    chess_move = []
+    coordinates.each do |coordinate|
+      column_letter = columns.invert[coordinate[1] + 1]
+      chess_move.append("#{column_letter}#{coordinate[0]}")
+    end
+    chess_move
+  end
 end
 
 # b = Board.new
