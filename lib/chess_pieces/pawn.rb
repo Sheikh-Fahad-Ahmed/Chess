@@ -19,17 +19,28 @@ class Pawn
 
   def legal_moves(coordinate, board)
     moves = []
-    if board[coordinate[0]][coordinate[1]] == pawn_white && coordinate[0] == 6
-      moves.append(
-        [(coordinate[0] - 1), coordinate[1]],
-        [(coordinate[0] - 2), coordinate[1]]
-      )
-    end
-    if board[coordinate[0]][coordinate[1]] == pawn_black && coordinate[0] == 1
-      moves.append(
-        [8 - (coordinate[0] + 1), coordinate[1]],
-        [8 - (coordinate[0] + 2), coordinate[1]]
-      )
+    if board[coordinate[0]][coordinate[1]] == pawn_white
+      if coordinate[0] == 6
+        moves.append(
+          [(coordinate[0] - 1), coordinate[1]],
+          [(coordinate[0] - 2), coordinate[1]]
+        )
+      else
+        moves.append(
+          [coordinate[0] - 1, coordinate[1]]
+        )
+      end
+    elsif board[coordinate[0]][coordinate[1]] == pawn_black
+      if coordinate[0] == 1
+        moves.append(
+          [8 - (coordinate[0] + 1), coordinate[1]],
+          [8 - (coordinate[0] + 2), coordinate[1]]
+        )
+      else
+        moves.append(
+          [coordinate[0] + 1, coordinate[1]]
+        )
+      end
     end
     moves
   end

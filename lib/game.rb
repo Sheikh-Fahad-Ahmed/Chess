@@ -20,17 +20,22 @@ class Game
   def choose_a_piece
     choice = position?(board.columns)
     choice = position?(board.columns) while chess_piece?(choice, board) == "\nEmpty Space"
-
-    puts "You picked #{chess_piece?(choice, board).name}"
-    next_move(choice)
-  end
-
-  def next_move(choice)
     moves = chess_piece?(choice, board).legal_moves(choice, board.board)
     print moves
+    while moves.empty?
+      puts "\n There are no moves for this chess piece. Please pick another."
+      choice = position?(board.columns) while chess_piece?(choice, board) == "\nEmpty Space"
+      moves = chess_piece?(choice, board).legal_moves(choice, board.board)
+    end
+    puts "You picked #{chess_piece?(choice, board).name}"
     move_notations = board.chess_notation(moves)
-    puts "Your legal moves are : "
+    print move_notations
+    puts 'Your legal moves are : '
     puts move_notations
+    next_move(choice, moves)
+  end
+
+  def next_move(choice, moves)
     puts "\nEnter your next move: "
     new_position = position?(board.columns)
     print new_position
@@ -60,5 +65,7 @@ end
 
 g = Game.new
 g.start_game
+g.choose_a_piece
+g.board.show_board
 g.choose_a_piece
 g.board.show_board
